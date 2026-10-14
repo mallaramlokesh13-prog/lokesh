@@ -1,0 +1,6 @@
+{
+  "name": "InnovateVerse",
+  "description": "AI-powered campus innovation platform connecting student skills, ideas, collaborator discovery, mentorship, human proposal reviews, and financial grant tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

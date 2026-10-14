@@ -1,0 +1,228 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with skill and role information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "mentor", "admin"] },
+        "college": { "type": "string" },
+        "department": { "type": "string" },
+        "year": { "type": "string" },
+        "skills": { "type": "array" },
+        "interests": { "type": "string" },
+        "experienceLevel": { "type": "string" },
+        "preferredTechnologies": { "type": "string" },
+        "collaborationPreferences": { "type": "string" },
+        "bio": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "email", "role"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Campus innovation submission and proposal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "title": { "type": "string" },
+        "problemStatement": { "type": "string" },
+        "proposedSolution": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "targetUsers": { "type": "string" },
+        "expectedImpact": { "type": "string" },
+        "requiredTechnologies": { "type": "array" },
+        "requiredSkills": { "type": "array" },
+        "estimatedBudget": { "type": "number" },
+        "approvedBudget": { "type": "number" },
+        "expectedTimeline": { "type": "string" },
+        "status": { "type": "string", "enum": ["Submitted", "Under Review", "Changes Requested", "Approved", "Rejected"] },
+        "mentorId": { "type": "string" },
+        "mentorName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "studentId", "title", "problemStatement", "proposedSolution", "status"]
+    },
+    "AIEvaluation": {
+      "title": "AIEvaluation",
+      "description": "AI-generated innovation evaluation report",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "overallScore": { "type": "number" },
+        "originalityScore": { "type": "number" },
+        "feasibilityScore": { "type": "number" },
+        "innovationScore": { "type": "number" },
+        "impactScore": { "type": "number" },
+        "complexityScore": { "type": "number" },
+        "scalabilityScore": { "type": "number" },
+        "strengths": { "type": "array" },
+        "weaknesses": { "type": "array" },
+        "suggestions": { "type": "array" },
+        "recommendedTech": { "type": "array" },
+        "requiredTeamSkills": { "type": "array" },
+        "implementationRoadmap": { "type": "array" },
+        "risksLimitations": { "type": "array" },
+        "isDemo": { "type": "boolean" },
+        "evaluatedAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "overallScore"]
+    },
+    "CollaborationRequest": {
+      "title": "CollaborationRequest",
+      "description": "Request to collaborate on a project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectTitle": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderEmail": { "type": "string" },
+        "senderSkills": { "type": "array" },
+        "recipientId": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Accepted", "Rejected"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "senderId", "recipientId", "status"]
+    },
+    "FundingRequest": {
+      "title": "FundingRequest",
+      "description": "Student grant or project funding application",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "projectTitle": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "requestedAmount": { "type": "number" },
+        "purpose": { "type": "string" },
+        "itemizedBudget": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Approved", "Rejected"] },
+        "approvedAmount": { "type": "number" },
+        "adminNotes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "studentId", "requestedAmount", "purpose", "status"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Recorded expense with bill receipt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "expenseDate": { "type": "string" },
+        "receiptName": { "type": "string" },
+        "receiptUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Verified", "Rejected"] },
+        "reviewerNotes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "studentId", "description", "amount", "status"]
+    },
+    "Milestone": {
+      "title": "Milestone",
+      "description": "Project milestone tracking task",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "assignedMember": { "type": "string" },
+        "startDate": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["Not Started", "In Progress", "Completed", "Blocked"] },
+        "progressNotes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "title", "status"]
+    },
+    "ProjectReview": {
+      "title": "ProjectReview",
+      "description": "Admin review history for projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "reviewerId": { "type": "string" },
+        "reviewerName": { "type": "string" },
+        "decision": { "type": "string", "enum": ["Approved", "Rejected", "Changes Requested"] },
+        "comments": { "type": "string" },
+        "reviewedAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "reviewerId", "decision"]
+    },
+    "MentorNote": {
+      "title": "MentorNote",
+      "description": "Mentoring guidance and notes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "mentorId": { "type": "string" },
+        "mentorName": { "type": "string" },
+        "noteType": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "projectId", "mentorId", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and skill credentials"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Campus innovation ideas and proposals"
+    },
+    "/aiEvaluations/{evalId}": {
+      "schema": "AIEvaluation",
+      "description": "AI-generated evaluation reports"
+    },
+    "/collaborationRequests/{requestId}": {
+      "schema": "CollaborationRequest",
+      "description": "Peer collaboration invitations"
+    },
+    "/fundingRequests/{fundingId}": {
+      "schema": "FundingRequest",
+      "description": "Project funding and grant requests"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Recorded expense vouchers and receipts"
+    },
+    "/milestones/{milestoneId}": {
+      "schema": "Milestone",
+      "description": "Milestones and progress track items"
+    },
+    "/projectReviews/{reviewId}": {
+      "schema": "ProjectReview",
+      "description": "Admin review and decision audits"
+    },
+    "/mentorNotes/{noteId}": {
+      "schema": "MentorNote",
+      "description": "Mentor meeting notes and recommendations"
+    }
+  }
+}
